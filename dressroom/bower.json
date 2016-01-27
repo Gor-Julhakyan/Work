@@ -1,0 +1,9 @@
+{
+  "name": "dressroom",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "~1.4.5",
+    "jquery": "~2.1.4",
+    "normalize.css": "~3.0.3"
+  }
+}
