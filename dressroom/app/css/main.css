@@ -1,4 +1,102 @@
+@-webkit-keyframes pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1); }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9); } }
+@keyframes pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1); }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9); } }
 .room {
+  margin-top: 50px;
   width: 50%;
   height: 80vh;
-  border: 2px solid #555; }
+  border: 2px solid #555;
+  margin: 0 auto;
+  background: url("/assets/img/room_bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-origin: border-box;
+  background-attachment: fixed;
+  box-sizing: border-box; }
+
+.stage-one {
+  text-align: center;
+  padding: 10%;
+  background: #263238;
+  height: 80vh;
+  box-sizing: border-box; }
+  .stage-one .greeting {
+    font-family: "Roboto Slab";
+    font-size: 6em;
+    color: #eee;
+    margin-bottom: 20px; }
+  .stage-one .gender {
+    height: 80px;
+    width: 100%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    .stage-one .gender span {
+      margin: 3%; }
+    .stage-one .gender .fa {
+      font-size: 4.5em;
+      font-weight: 700;
+      width: 80px;
+      height: 80px;
+      color: #eee; }
+      .stage-one .gender .fa:hover {
+        -webkit-animation-name: pulse;
+        animation-name: pulse;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-timing-function: linear;
+        animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        cursor: pointer; }
+    .stage-one .gender .male:hover {
+      color: #03A9F4; }
+    .stage-one .gender .female:hover {
+      color: #E91E63; }
+    .stage-one .gender .title {
+      display: block;
+      color: #263238;
+      background: #8BC34A;
+      padding: 8px;
+      margin-top: 15px;
+      font-size: 1.1em;
+      font-family: "Roboto Condensed";
+      font-weight: 700;
+      outline: 3px solid #263238;
+      outline-offset: -5px;
+      transition: 0.5s all; }
+  .stage-one .gr-description {
+    color: #03A9F4;
+    font-size: 1.5em;
+    margin-top: 80px;
+    padding: 40px;
+    font-family: "Roboto Condensed"; }
+
+.stage-one-leave {
+  left: 0; }
+  .stage-one-leave.stage-one-leave-active {
+    left: -100%; }
+
+.stage-one-enter {
+  left: 100%; }
+  .stage-one-enter.stage-one-enter-active {
+    left: 0; }
+
+.stage-one-enter,
+.stage-one-leave {
+  transition: 300ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all; }

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="bower_components/normalize.css/normalize.css" />
     <!-- endbower -->
     <!-- endbuild -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <!-- build:css assets/css/main.css -->
     <link rel="stylesheet" href="css/main.css">
     <!-- endbuild -->
@@ -16,6 +17,7 @@
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- endbuild -->
@@ -24,6 +26,17 @@
 <body ng-app="Dressroom">
     <div ng-controller="MainCtrl">
 		<div class="room">
+			<div ng-if="stageOne" class="stage-one">
+				<div class="greeting">Hello</div>
+				<div class="gender">
+					<span class="item" ng-repeat="gender in genders">
+                        <i class="{{ gender.icon }} {{ gender.title }}" ng-mouseover="gender.titleShow = true" ng-mouseleave="gender.titleShow = false" ng-click="stages(gender.stageAction)"></i>
+                        <div ng-if="gender.titleShow" class="title">{{ gender.title | uppercase }}</div>
+					</span>
+				</div>
+				<div class="gr-description">Please Select Your Gender!</div>
+			</div>
+
 			<canvas width="200px">
                 
             </canvas>

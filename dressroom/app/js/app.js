@@ -1,1 +1,1 @@
-var app = angular.module('Dressroom', []);
+var app = angular.module('Dressroom', ['ngAnimate']);

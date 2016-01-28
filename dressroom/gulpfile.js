@@ -7,7 +7,7 @@ var gulp = require('gulp'),
     gulpif = require('gulp-if'),
     uglify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css'),
-    sass = require('gulp-sass'),
+    scss = require('gulp-sass'),
 	clean = require('gulp-clean'),
     connect = require('gulp-connect'),
 	ftp = require('gulp-sftp'),
@@ -15,17 +15,26 @@ var gulp = require('gulp'),
     rename = require("gulp-rename"),
     sourcemaps = require('gulp-sourcemaps'),
     concat = require('gulp-concat'),
-    uncss = require('gulp-uncss');
+    uncss = require('gulp-uncss'),
+    sass = require('gulp-ruby-sass');
  
 
-// Task for SASS
+// Task for SASS - SASS
 gulp.task('sass', function () {
-  gulp.src('app/sass/**/*.sass')
-    .pipe(sass({ includePaths : ['app/sass/'] }))
-    .pipe(sass().on('error', sass.logError))
+  return sass('app/sass/**/*.sass')
+    .on('error', sass.logError)
     .pipe(gulp.dest('app/css'))
     .pipe(connect.reload());
 });
+
+// Task for SASS - SCSS
+//gulp.task('scss', function () {
+//  gulp.src('app/sass/**/*.scss')
+//    .pipe(sass({ includePaths : ['app/sass/'] }))
+//    .pipe(sass().on('error', sass.logError))
+//    .pipe(gulp.dest('app/css'))
+//    .pipe(connect.reload());
+//});
 
 // Task for CSS
 gulp.task('css', function () {
@@ -102,9 +111,12 @@ gulp.task('watch', function() {
     gulp.watch('app/css/*.css', ['css'])
     gulp.watch('app/index.html', ['html'])
     gulp.watch('app/js/**/*.js', ['js'])
-    gulp.watch('app/sass/**/*.scss', ['sass']);
+    gulp.watch('app/sass/**/*.scss', ['scss'])
+    gulp.watch('app/sass/**/*.sass', ['sass']);
 });
 
 
 // Default Task
 gulp.task('default', ['connect', 'html', 'css', 'sass', 'js', 'watch']);
+
+
