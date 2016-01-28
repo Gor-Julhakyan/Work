@@ -20,7 +20,7 @@ var gulp = require('gulp'),
 
 // Task for SASS
 gulp.task('sass', function () {
-  gulp.src('app/sass/**/*.scss')
+  gulp.src('app/sass/**/*.sass')
     .pipe(sass({ includePaths : ['app/sass/'] }))
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('app/css'))
@@ -59,7 +59,7 @@ gulp.task('connect', function() {
 });
 
 // SFTP Task
-gulp.task('dsftp', function () {
+gulp.task('ftp', function () {
     return gulp.src('dist/**/*')
         .pipe(sftp({
             host: '',
