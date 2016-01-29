@@ -36,6 +36,24 @@
 				</div>
 				<div class="gr-description">Please Select Your Gender!</div>
 			</div>
+            <span ng-repeat="model in models">
+                <div ng-if="model.action" class="stage-two {{ model.class }}">
+                    <h2>Please Select Your Model</h2>
+                    <div class="models">
+                    <a href="" ng-repeat="item in model.items" ng-click="isActive(item.model); model.action = false">
+                        <img ng-src="{{ item.model }}" alt="" >
+                        </a>
+                    </div>
+                </div>
+            </span>
+
+            <div class="stage-three">
+                <div class="model-sections" ng-style="{'background-image': 'url(' + activeModel + ')'}">
+                    {{ activeModel }}
+                </div>
+
+            </div>
+
 
 			<canvas width="200px">
                 
