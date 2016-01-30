@@ -48,10 +48,34 @@
             </span>
 
             <div class="stage-three">
-                <div class="model-sections" ng-style="{'background-image': 'url(' + activeModel + ')'}">
-                    {{ activeModel }}
+                <div class="tools-section">
+                    
                 </div>
+                <div class="model-sections">
+                    <span class="model">
+                         <img ng-src="{{ activeModel }}" alt="" >
+                    </span>
+                     <div class="tshirt">
+                         <img ng-src="{{ tshirt }}" alt="">
+                     </div>
+                     <div class="trouser">
+                         <img ng-src="{{ trouser }}" alt="">
+                     </div>
+                </div>
+                
+                <div class="clothes-section">
+                    <div ng-repeat="cloth in clothes">
+                        <div class="category-name">
+                            <span>{{ cloth.category | uppercase }}</span>
+                        </div>
+                        <div class="cloth-cntr" ng-repeat="item in cloth.items | filter:clothesFilter">
+                            <img class="cloth-item" ng-src="{{ item.img }}" alt="" ng-mouseover="msover(item.img)">
+                        </div>
+                    </div>
+                </div>
+                <div class="model-sections">
 
+                </div>
             </div>
 
 
