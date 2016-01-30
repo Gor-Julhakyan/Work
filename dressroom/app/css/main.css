@@ -150,10 +150,8 @@ body {
   box-sizing: border-box; }
   .model-sections img {
     max-height: 420px; }
-  .model-sections .tshirt {
-    height: 160px;
+  .model-sections .cloth {
     position: absolute;
-    top: 85px;
     text-align: center;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -162,8 +160,23 @@ body {
     -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center; }
-    .model-sections .tshirt img {
+    .model-sections .cloth img {
       max-height: 100%; }
+  .model-sections .tshirt {
+    height: 160px;
+    top: 85px; }
+  .model-sections .trouser {
+    height: 175px;
+    top: 220px; }
+  .model-sections .cup {
+    height: 52px;
+    top: 17px; }
+  .model-sections .dress {
+    height: 200px;
+    top: 40px; }
+  .model-sections .boots {
+    height: 95px;
+    top: 350px; }
 
 .clothes-section {
   width: 35%;

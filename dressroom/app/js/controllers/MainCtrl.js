@@ -3,6 +3,7 @@ app.controller('MainCtrl', ['$scope', function($scope) {
 	$scope.enterFemale = false;
 	$scope.enterMale = false;
 	$scope.clothesFilter = "";
+	$scope.dressRoomActive = false;
 
 	$scope.genders = [
 		{
@@ -18,7 +19,7 @@ app.controller('MainCtrl', ['$scope', function($scope) {
 			stageAction: "female"
 		}
 	];
-
+console.log($scope.dressRoomActive);
 	$scope.stages = function (stage) {
 		$scope.stageOne = false;
 		switch(stage) {
@@ -101,23 +102,56 @@ app.controller('MainCtrl', ['$scope', function($scope) {
 			]
 		},
 		{
-			category: "",
+			category: "cups",
 			items: [
-				
+				{ img: "assets/img/clothes/cups/cap_1.png", filter: "male" },
+				{ img: "assets/img/clothes/cups/cap_2.png", filter: "male" },
+				{ img: "assets/img/clothes/cups/cap_3.png", filter: "male" },
+				{ img: "assets/img/clothes/cups/cap_4.png", filter: "male" },
+				{ img: "assets/img/clothes/cups/cap_5.png", filter: "male" },
+				{ img: "assets/img/clothes/cups/cap_6.png", filter: "male" }				
 			]
 		},
 		{
-			category: "",
+			category: "boots",
 			items: [
-				
+				{ img: "assets/img/clothes/boots/boots_1.png", filter: "male"}
 			]
 		}	
 	];
 
 	$scope.tshirt = "";
+	$scope.trouser = "";
+	$scope.dress = "";
+	$scope.cup= "";
+	$scope.boots= "";
 
-	$scope.msover = function (img) {
-		$scope.tshirt = img; 
+	$scope.msover = function (img, filter) {
+		
+		console.log(filter);
+		switch(filter) {
+			case "t-shirt":
+				console.log(filter + 'SELECT');
+				$scope.tshirt = img;
+				break;
+			case "trousers":
+				console.log(filter + 'SELECT');
+				$scope.trouser = img;
+				break;
+	    	case "dresses":
+				console.log(filter + 'SELECT');
+				$scope.dress = img;
+				break;
+	        case "cups":
+				console.log(filter + 'SELECT');
+				$scope.cup = img;
+				break;
+			case "boots":
+				console.log(filter + 'SELECT');
+				$scope.boots = img;
+				break;
+	      default:
+   		}
 	}
 
 }]);

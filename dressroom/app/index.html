@@ -40,14 +40,14 @@
                 <div ng-if="model.action" class="stage-two {{ model.class }}">
                     <h2>Please Select Your Model</h2>
                     <div class="models">
-                    <a href="" ng-repeat="item in model.items" ng-click="isActive(item.model); model.action = false">
+                    <a href="" ng-repeat="item in model.items" ng-click="isActive(item.model); model.action = false; dressRoomActive = true ">
                         <img ng-src="{{ item.model }}" alt="" >
                         </a>
                     </div>
                 </div>
             </span>
 
-            <div class="stage-three">
+            <div ng-if="dressRoomActive" class="stage-three">
                 <div class="tools-section">
                     
                 </div>
@@ -55,11 +55,17 @@
                     <span class="model">
                          <img ng-src="{{ activeModel }}" alt="" >
                     </span>
-                     <div class="tshirt">
+                     <div class="cloth tshirt">
                          <img ng-src="{{ tshirt }}" alt="">
                      </div>
-                     <div class="trouser">
+                     <div class="cloth trouser">
                          <img ng-src="{{ trouser }}" alt="">
+                     </div>
+                     <div class="cloth cup">
+                         <img ng-src="{{ cup }}" alt="">
+                     </div>
+                     <div class="cloth boots">
+                         <img ng-src="{{ boots }}" alt="">
                      </div>
                 </div>
                 
@@ -69,7 +75,7 @@
                             <span>{{ cloth.category | uppercase }}</span>
                         </div>
                         <div class="cloth-cntr" ng-repeat="item in cloth.items | filter:clothesFilter">
-                            <img class="cloth-item" ng-src="{{ item.img }}" alt="" ng-mouseover="msover(item.img)">
+                            <img class="cloth-item" ng-src="{{ item.img }}" alt="" ng-mouseover="msover(item.img, cloth.category)">
                         </div>
                     </div>
                 </div>
