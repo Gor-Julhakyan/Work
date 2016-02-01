@@ -86,14 +86,12 @@ gulp.task('clean', ['clean'], function () {
 
 // Builder Task
 gulp.task('build', function () {
-    var assets = useref.assets();
+    //var assets = useref.assets();
  
     return gulp.src('app/*.html')
-        .pipe(assets)
+        .pipe(useref())
         .pipe(gulpif('*.js', uglify()))
         .pipe(gulpif('*.css', minifyCss()))
-        .pipe(assets.restore())
-        .pipe(useref())
         .pipe(gulp.dest('dist'));
 });
 
