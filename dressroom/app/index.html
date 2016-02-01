@@ -46,7 +46,7 @@
                 <div ng-if="model.action" class="stage-two {{ model.class }}">
                     <h2>Please Select Your Model</h2>
                     <div class="models">
-                        <a href="" ng-repeat="item in model.items" ng-click="isActive(item.model); model.action = false; toStageThree() ">
+                        <a href="" ng-repeat="item in model.items" ng-click="isActive(item.model, item.class); model.action = false; toStageThree() ">
                             <img ng-src="{{ item.model }}" alt="" >
                         </a>
                     </div>
@@ -56,8 +56,8 @@
             <div ng-if="stageThree" class="stage-three">
                 <h2>Plese Select Your Portrate</h2>
                 <div class="portraite-groups">
-                    <label for="">
-                        <input type="radio" name="portrates" value="default" ng-model="portraitType">
+                    <label for="" ng-init="portraitType='default'">
+                        <input type="radio" name="portrates" value="default" ng-model="portraitType" checked>
                         Default
                     </label>
                     <label for="">
@@ -66,9 +66,9 @@
                     </label> 
                 </div>
                 <div ng-show="portraitType == 'default'" class="prt-cntr" ng-repeat="portrait in portraits">
-                    <span ng-if="portrait.display" ng-repeat="item in portrait.images">
+                    <a ng-if="portrait.display" ng-repeat="item in portrait.images" ng-click="portraiteDefault(item.img)">
                         <img ng-src="{{ item.img }}" alt="">
-                    </span>
+                    </a>
                 </div>
                 <div ng-show="portraitType == 'user'" class="user-prt-cntr">
                     <div class="prt-cntr">
@@ -107,39 +107,39 @@
                             <div>Cropped Image:</div>
                             <div><img ng-src="{{ image.myCroppedImage }}" /></div> 
                         </div>
-                    <!--    <image-cropper image="{{ userPortraite }}"
-                            dest-width="80"
-                            dest-height="80"
-                            show-controls=true
-                            cropped-image="result"
-                        ></image-cropper> -->
                     </div>
-                    <button class="btn-cub" ng-click="displayTrigger()" n>CONTINUE</button>
+                    <button class="btn-cub" ng-click="displayTrigger()">CONTINUE</button>
                 </div>
             </div>
 
             <div ng-if="stageFor" class="dress-room">
                 <div class="tools-section">
-
+                    <a href="javascript:genScreenshot()"> Get Screenshot</a>
+                    <a id="test"></a>
                 </div>
                 <div class="model-sections">
                     <span class="model">
-                         <img ng-src="{{image.myCroppedImage}}" alt="" >
+                         <img ng-src="{{activeModel}}" alt="" >
                     </span>
-                    <div class="cloth portraite">
-                        <img ng-src="{{ myCroppedImage }}" alt="">
-                    </div>
-                     <div class="cloth tshirt">
-                         <img ng-src="{{ tshirt }}" alt="">
-                     </div>
-                     <div class="cloth trouser">
-                         <img ng-src="{{ trouser }}" alt="">
-                     </div>
-                     <div class="cloth cup">
-                         <img ng-src="{{ cup }}" alt="">
-                     </div>
-                     <div class="cloth boots">
-                         <img ng-src="{{ boots }}" alt="">
+                    <div id="text" class="{{activeClass}}">
+                        <div class="cloth portraite{{prtDflt}}">
+                            <img ng-src="{{image.myCroppedImage}}" class="{{portraiteImg}}" alt="">
+                        </div>
+                         <div ng-if="dress == ''" class="cloth tshirt">
+                             <img ng-src="{{ tshirt }}" alt="">
+                         </div>
+                         <div ng-if="dress == ''" class="cloth trouser">
+                             <img ng-src="{{ trouser }}" alt="">
+                         </div>
+                         <div class="cloth cup">
+                             <img ng-src="{{ cup }}" alt="">
+                         </div>
+                         <div class="cloth boots">
+                             <img ng-src="{{ boots }}" alt="">
+                         </div>
+                         <div class="cloth dress">
+                             <img ng-src="{{ dress }}" alt="">
+                         </div>
                      </div>
                 </div>
                 <div class="clothes-section">
@@ -154,8 +154,10 @@
                 </div>
             </div>
 		</div>
+<div id="box1">
 
 
+</div>
 
     </div>
     <!-- Scripts includes-->
@@ -163,6 +165,9 @@
     <script src="js/app.js"></script>
     <script src="js/controllers/MainCtrl.js"></script>
     <script src="js/fonts/fonts.js"></script>
+    <script src="js/scripts/getScrinshot.js"></script>
+    <script src="js/scripts/html2canvas.js"></script>
+    <script src="js/scripts/html2canvas.svg.js"></script>
     <!-- endbuild -->
 </body>
 

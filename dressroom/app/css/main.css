@@ -294,27 +294,157 @@ body {
     justify-content: center; }
     .model-sections .cloth img {
       max-height: 100%; }
-  .model-sections .tshirt {
+  .model-sections .boy-1 .tshirt {
+    height: 135px;
+    top: 101px; }
+  .model-sections .boy-1 .trouser {
+    height: 157px;
+    top: 225px; }
+  .model-sections .boy-1 .cup {
+    height: 50px;
+    top: 33px; }
+  .model-sections .boy-1 .boots {
+    height: 77px;
+    top: 353px;
+    left: -4px; }
+  .model-sections .boy-1 .portraite {
+    top: 48px;
+    height: 52px; }
+  .model-sections .boy-1 .portraite-dflt {
+    top: 47px;
+    height: 58px;
+    width: 450px;
+    left: -19px; }
+  .model-sections .boy-2 .tshirt {
     height: 160px;
     top: 85px; }
-  .model-sections .trouser {
+  .model-sections .boy-2 .trouser {
     height: 175px;
     top: 220px; }
-  .model-sections .cup {
+  .model-sections .boy-2 .cup {
     height: 52px;
     top: 17px; }
-  .model-sections .dress {
-    height: 200px;
-    top: 40px; }
-  .model-sections .boots {
+  .model-sections .boy-2 .boots {
     height: 95px;
     top: 350px; }
-  .model-sections .portraite {
+  .model-sections .boy-2 .portraite {
     top: 28px;
     height: 52px; }
-    .model-sections .portraite img {
-      border-radius: 43%;
-      width: 11%; }
+  .model-sections .boy-2 .portraite-dflt {
+    top: 16px;
+    height: 70px;
+    width: 450px;
+    left: -20px; }
+  .model-sections .boy-3 .tshirt {
+    height: 172px;
+    top: 66px; }
+  .model-sections .boy-3 .trouser {
+    height: 200px;
+    top: 195px; }
+  .model-sections .boy-3 .cup {
+    height: 60px;
+    top: -5px; }
+  .model-sections .boy-3 .boots {
+    height: 107px;
+    top: 343px;
+    left: -4px; }
+  .model-sections .boy-3 .portraite {
+    top: 3px;
+    height: 59px;
+    width: 450px;
+    left: -20px; }
+  .model-sections .boy-3 .portraite-dflt {
+    top: -4px;
+    height: 75px;
+    width: 450px;
+    left: -20px; }
+  .model-sections .girl-1 .tshirt {
+    height: 120px;
+    top: 112px;
+    left: 6px; }
+  .model-sections .girl-1 .trouser {
+    height: 176px;
+    top: 216px;
+    left: 8px; }
+  .model-sections .girl-1 .cup {
+    height: 50px;
+    top: 33px; }
+  .model-sections .girl-1 .dress {
+    height: 200px;
+    top: 120px;
+    left: 6px; }
+  .model-sections .girl-1 .boots {
+    height: 77px;
+    top: 353px;
+    left: -4px; }
+  .model-sections .girl-1 .portraite {
+    top: 48px;
+    height: 52px;
+    left: 6px; }
+  .model-sections .girl-1 .portraite-dflt {
+    top: 42px;
+    height: 65px;
+    width: 450px;
+    left: -14px; }
+  .model-sections .girl-2 .tshirt {
+    height: 140px;
+    top: 85px;
+    left: 7px; }
+  .model-sections .girl-2 .trouser {
+    height: 190px;
+    top: 195px;
+    left: 9px; }
+  .model-sections .girl-2 .cup {
+    height: 50px;
+    top: 33px; }
+  .model-sections .girl-2 .dress {
+    height: 203px;
+    top: 88px;
+    left: 7px; }
+  .model-sections .girl-2 .boots {
+    height: 77px;
+    top: 353px;
+    left: -4px; }
+  .model-sections .girl-2 .portraite {
+    top: 24px;
+    height: 52px;
+    left: 4px; }
+  .model-sections .girl-2 .portraite-dflt {
+    top: 8px;
+    height: 75px;
+    width: 450px;
+    left: -11px; }
+  .model-sections .girl-3 .tshirt {
+    height: 135px;
+    top: 71px;
+    left: 7px; }
+  .model-sections .girl-3 .trouser {
+    height: 195px;
+    top: 185px;
+    left: 9px; }
+  .model-sections .girl-3 .cup {
+    height: 50px;
+    top: 33px; }
+  .model-sections .girl-3 .dress {
+    height: 215px;
+    top: 80px;
+    left: 8px; }
+  .model-sections .girl-3 .boots {
+    height: 77px;
+    top: 353px;
+    left: -4px; }
+  .model-sections .girl-3 .portraite {
+    top: 3px;
+    height: 58px;
+    left: 6px; }
+  .model-sections .girl-3 .portraite-dflt {
+    top: -2px;
+    height: 70px;
+    width: 450px;
+    left: -13px; }
+  .model-sections .prt-img {
+    border-radius: 43%;
+    width: 11%; }
 
 .clothes-section {
   width: 35%;

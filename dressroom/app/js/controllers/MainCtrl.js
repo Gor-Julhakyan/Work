@@ -47,27 +47,29 @@ console.log($scope.dressRoomActive);
 			action: false,
 			class: "male-enter",
 			items: [
-				{ model: "assets/img/models/boy_1.png" },
-				{ model: "assets/img/models/boy_2.png" },
-				{ model: "assets/img/models/boy_3.png" }
+				{ model: "assets/img/models/boy_1.png", class: "boy-1" },
+				{ model: "assets/img/models/boy_2.png", class: "boy-2" },
+				{ model: "assets/img/models/boy_3.png", class: "boy-3" }
 			]
 		},
 		{
 			action: false,
 			class: "female-enter",
 			items: [
-				{ model: "assets/img/models/girl_1.png" },
-				{ model: "assets/img/models/girl_2.png" },
-				{ model: "assets/img/models/girl_3.png" }
+				{ model: "assets/img/models/girl_1.png", class: "girl-1" },
+				{ model: "assets/img/models/girl_2.png", class: "girl-2" },
+				{ model: "assets/img/models/girl_3.png", class: "girl-3" }
 			]
 		}
 	];
 	
 	$scope.activeModel = "";
+	$scope.activeClass = "";
 
-	$scope.isActive = function (src) {
+	$scope.isActive = function (src, cls) {
 		$scope.activeModel = src;
-		console.log($scope.activeModel);
+		$scope.activeClass = cls;
+		console.log($scope.activeModel + '&' + $scope.activeClass);
 		$scope.stageThree = true;
 	};
 	
@@ -180,6 +182,17 @@ console.log($scope.dressRoomActive);
 			]
 		}
 	];
+
+	$scope.portraiteImg = "prt-img";
+	$scope.prtDflt = '';
+
+	$scope.portraiteDefault = function (src) {
+		$scope.image.myCroppedImage = src;
+		$scope.stageThree = false;
+		$scope.stageFor = true;
+		$scope.portraiteImg = "prt-img-dflt";
+		$scope.prtDflt = '-dflt';
+	}
 
 	$scope.displayTrigger = function () {
 		 $scope.stageThree = false;
