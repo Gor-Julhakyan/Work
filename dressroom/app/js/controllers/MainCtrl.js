@@ -1,9 +1,11 @@
-app.controller('MainCtrl', ['$scope', function($scope) {
-	$scope.stageOne = false;
+app.controller('MainCtrl', ['$scope', 'ngDialog', function($scope, ngDialog) {
+	$scope.stageOne = true;
 	$scope.enterFemale = false;
 	$scope.enterMale = false;
+	$scope.stageThree = false;
 	$scope.clothesFilter = "";
 	$scope.dressRoomActive = false;
+	$scope.webCamSnapshot = "";
 
 	$scope.genders = [
 		{
@@ -27,11 +29,13 @@ console.log($scope.dressRoomActive);
 	         $scope.stageOne = false;
 	         $scope.models[0].action = true;
 	         $scope.clothesFilter = "male";
+	         $scope.portraits[0].display = true;
 	         break;
 	      case "female":
 	         $scope.stageOne = false;
 	         $scope.models[1].action = true;
 	         $scope.clothesFilter = "female";
+	         $scope.portraits[1].display = true;
 	         break;
 	      default:
    		}
@@ -39,7 +43,7 @@ console.log($scope.dressRoomActive);
 
 	$scope.models = [
 		{
-			action: true,
+			action: false,
 			class: "male-enter",
 			items: [
 				{ model: "assets/img/models/boy_1.png" },
@@ -63,7 +67,8 @@ console.log($scope.dressRoomActive);
 	$scope.isActive = function (src) {
 		$scope.activeModel = src;
 		console.log($scope.activeModel);
-	}
+		$scope.stageThree = true;
+	};
 	
 	$scope.clothes = [
 		{
@@ -152,6 +157,47 @@ console.log($scope.dressRoomActive);
 				break;
 	      default:
    		}
+	};
+
+	$scope.portraits = [
+		{
+			display: false,
+			images: [
+				{ img: "assets/img/portraits/male/prt_1.png", group: "aa" },
+				{ img: "assets/img/portraits/male/prt_2.png", group: "aa" },
+				{ img: "assets/img/portraits/male/prt_3.png", group: "aa" },
+				{ img: "assets/img/portraits/male/prt_4.png", group: "aa" }				
+			]
+		},
+		{
+			display: false,
+			images: [
+				{ img: "assets/img/portraits/female/prt_1.png", group: "aa" },
+				{ img: "assets/img/portraits/female/prt_2.png", group: "aa" },
+				{ img: "assets/img/portraits/female/prt_3.png", group: "aa" },
+			
+			]
+		}
+	];
+
+  $scope.userPortraite = "";
+  $scope.myCroppedImage='';
+
+  var handleFileSelect=function(evt) {
+    var file=evt.currentTarget.files[0];
+    var reader = new FileReader();
+    reader.onload = function (evt) {
+      $scope.$apply(function($scope){
+        $scope.userPortraite=evt.target.result;
+      });
+    };
+    reader.readAsDataURL(file);
+  };
+  angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
+				
+	$scope.toFinish = function () {
+		$scope.dressRoomActive = true;
 	}
+
 
 }]);

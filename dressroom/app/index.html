@@ -7,6 +7,9 @@
     <!-- build:css assets/css/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/normalize.css/normalize.css" />
+    <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.css" />
+    <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.css" />
+    <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
@@ -17,7 +20,11 @@
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/webcamjs/webcam.js"></script>
+    <script src="bower_components/ng-camera/dist/ng-camera.js"></script>
+    <script src="bower_components/ng-dialog/js/ngDialog.js"></script>
+    <script src="bower_components/angular-camera/dist/angular-camera.js"></script>
+    <script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- endbuild -->
@@ -40,21 +47,83 @@
                 <div ng-if="model.action" class="stage-two {{ model.class }}">
                     <h2>Please Select Your Model</h2>
                     <div class="models">
-                    <a href="" ng-repeat="item in model.items" ng-click="isActive(item.model); model.action = false; dressRoomActive = true ">
-                        <img ng-src="{{ item.model }}" alt="" >
+                        <a href="" ng-repeat="item in model.items" ng-click="isActive(item.model); model.action = false; toStageThree() ">
+                            <img ng-src="{{ item.model }}" alt="" >
                         </a>
                     </div>
                 </div>
             </span>
 
-            <div ng-if="dressRoomActive" class="stage-three">
+            <div ng-if="stageThree" ng-hide="dressRoomActive" class="stage-three">
+                <h2>Plese Select Your Portrate</h2>
+                <div class="portraite-groups">
+                    <label for="">
+                        <input type="radio" name="portrates" value="default" ng-model="portraitType">
+                        Default
+                    </label>
+                    <label for="">
+                        <input type="radio" name="portrates" value="user" ng-model="portraitType">
+                        Your Portrate
+                    </label> 
+                </div>
+                <div ng-show="portraitType == 'default'" class="prt-cntr" ng-repeat="portrait in portraits">
+                    <span ng-if="portrait.display" ng-repeat="item in portrait.images">
+                        <img ng-src="{{ item.img }}" alt="">
+                    </span>
+                </div>
+                <div ng-show="portraitType == 'user'" class="user-prt-cntr">
+                    <div class="prt-cntr">
+                        <label for="avatar" class="icon-btn">
+                            <i class="fa fa-upload fa-4x"></i>
+                            <input type="file" id="fileInput" name="avatar" accept="image/*" ng-model="adad">
+                        </label>
+                        <p>OR</p>
+                        <span class="icon-btn">
+                            <i class="fa fa-camera fa-4x"></i>
+                        </span>
+                        <div ng-show="userPortraite == ''" class="camera">
+                            <ng-camera
+                                capture-message=""
+                                countdown="3"
+                                output-height="160"
+                                output-width="213"
+                                viewer-height="320"
+                                viewer-width="426"
+                                crop-height="90"
+                                crop-width="120"
+                                image-format="jpeg"
+                                jpeg-quality="100"
+                                action-message="Take picture"
+                                snapshot="userPortraite"
+                                flash-fallback-url="/vendors/webcamjs/webcam.swf"
+                                shutter-url="assets/camera/shutter.mp3"
+                            ></ng-camera>
+                        </div>
+                    </div>
+                    <div ng-hide="userPortraite == ''" class="user-prt">
+                        <div class="cropArea">
+                            <img-crop change-on-fly=true result-image-size=80 result-image-quality=1.0 image="userPortraite" result-image="myCroppedImage"></img-crop>
+                        </div>
+                        <div class="result">
+                            <div>Cropped Image:</div>
+                            <div><img ng-src="{{ myCroppedImage }}" /></div> 
+                        </div>
+                    </div>
+                    <button class="btn-cub" ng-click="toFinish()">CONTINUE</button>
+                </div>
+            </div>
+
+            <div ng-if="dressRoomActive" class="dress-room">
                 <div class="tools-section">
-                    
+
                 </div>
                 <div class="model-sections">
                     <span class="model">
                          <img ng-src="{{ activeModel }}" alt="" >
                     </span>
+                    <div class="cloth portraite">
+                        <img ng-src="{{ myCroppedImage }}" alt="">
+                    </div>
                      <div class="cloth tshirt">
                          <img ng-src="{{ tshirt }}" alt="">
                      </div>
@@ -68,7 +137,6 @@
                          <img ng-src="{{ boots }}" alt="">
                      </div>
                 </div>
-                
                 <div class="clothes-section">
                     <div ng-repeat="cloth in clothes">
                         <div class="category-name">
@@ -79,15 +147,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="model-sections">
-
-                </div>
             </div>
-
-
-			<canvas width="200px">
-                
-            </canvas>
 		</div>
 
 
