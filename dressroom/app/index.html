@@ -6,10 +6,10 @@
     <title>DressRoom</title>
     <!-- build:css assets/css/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/normalize.css/normalize.css" />
     <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.css" />
     <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.css" />
     <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css" />
+    <link rel="stylesheet" href="bower_components/normalize.css/normalize.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
@@ -18,12 +18,11 @@
     <!-- endbuild -->
     <!-- build:js assets/js/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/webcamjs/webcam.js"></script>
     <script src="bower_components/ng-camera/dist/ng-camera.js"></script>
     <script src="bower_components/ng-dialog/js/ngDialog.js"></script>
-    <script src="bower_components/angular-camera/dist/angular-camera.js"></script>
     <script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
@@ -54,7 +53,7 @@
                 </div>
             </span>
 
-            <div ng-if="stageThree" ng-hide="dressRoomActive" class="stage-three">
+            <div ng-if="stageThree" class="stage-three">
                 <h2>Plese Select Your Portrate</h2>
                 <div class="portraite-groups">
                     <label for="">
@@ -75,13 +74,13 @@
                     <div class="prt-cntr">
                         <label for="avatar" class="icon-btn">
                             <i class="fa fa-upload fa-4x"></i>
-                            <input type="file" id="fileInput" name="avatar" accept="image/*" ng-model="adad">
+                            <input type="file" id="fileInput" onchange="angular.element(this).scope().uploadFile(this.files[0])" />
                         </label>
                         <p>OR</p>
                         <span class="icon-btn">
                             <i class="fa fa-camera fa-4x"></i>
                         </span>
-                        <div ng-show="userPortraite == ''" class="camera">
+                        <div ng-show="image.myImage == ''" class="camera">
                             <ng-camera
                                 capture-message=""
                                 countdown="3"
@@ -94,32 +93,38 @@
                                 image-format="jpeg"
                                 jpeg-quality="100"
                                 action-message="Take picture"
-                                snapshot="userPortraite"
+                                snapshot="image.myImage"
                                 flash-fallback-url="/vendors/webcamjs/webcam.swf"
                                 shutter-url="assets/camera/shutter.mp3"
                             ></ng-camera>
                         </div>
                     </div>
-                    <div ng-hide="userPortraite == ''" class="user-prt">
+                    <div ng-hide="image.myImage == ''" class="user-prt">
                         <div class="cropArea">
-                            <img-crop change-on-fly=true result-image-size=80 result-image-quality=1.0 image="userPortraite" result-image="myCroppedImage"></img-crop>
+                            <img-crop change-on-fly=true result-image-size=80 result-image-quality=1.0 image="image.myImage" result-image="image.myCroppedImage"></img-crop>
                         </div>
                         <div class="result">
                             <div>Cropped Image:</div>
-                            <div><img ng-src="{{ myCroppedImage }}" /></div> 
+                            <div><img ng-src="{{ image.myCroppedImage }}" /></div> 
                         </div>
+                    <!--    <image-cropper image="{{ userPortraite }}"
+                            dest-width="80"
+                            dest-height="80"
+                            show-controls=true
+                            cropped-image="result"
+                        ></image-cropper> -->
                     </div>
-                    <button class="btn-cub" ng-click="toFinish()">CONTINUE</button>
+                    <button class="btn-cub" ng-click="displayTrigger()" n>CONTINUE</button>
                 </div>
             </div>
 
-            <div ng-if="dressRoomActive" class="dress-room">
+            <div ng-if="stageFor" class="dress-room">
                 <div class="tools-section">
 
                 </div>
                 <div class="model-sections">
                     <span class="model">
-                         <img ng-src="{{ activeModel }}" alt="" >
+                         <img ng-src="{{image.myCroppedImage}}" alt="" >
                     </span>
                     <div class="cloth portraite">
                         <img ng-src="{{ myCroppedImage }}" alt="">

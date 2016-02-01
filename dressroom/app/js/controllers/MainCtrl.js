@@ -3,6 +3,7 @@ app.controller('MainCtrl', ['$scope', 'ngDialog', function($scope, ngDialog) {
 	$scope.enterFemale = false;
 	$scope.enterMale = false;
 	$scope.stageThree = false;
+	$scope.stageFor = false;
 	$scope.clothesFilter = "";
 	$scope.dressRoomActive = false;
 	$scope.webCamSnapshot = "";
@@ -180,24 +181,27 @@ console.log($scope.dressRoomActive);
 		}
 	];
 
-  $scope.userPortraite = "";
-  $scope.myCroppedImage='';
-
-  var handleFileSelect=function(evt) {
-    var file=evt.currentTarget.files[0];
-    var reader = new FileReader();
-    reader.onload = function (evt) {
-      $scope.$apply(function($scope){
-        $scope.userPortraite=evt.target.result;
-      });
-    };
-    reader.readAsDataURL(file);
-  };
-  angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
-				
-	$scope.toFinish = function () {
-		$scope.dressRoomActive = true;
+	$scope.displayTrigger = function () {
+		 $scope.stageThree = false;
+		 $scope.stageFor = true; 
 	}
 
+	$scope.image = {
+	    myImage: '',
+	    myCroppedImage: ''
+	};
+
+	$scope.uploadFile = function(file) {
+	    if (file) {
+	        // ng-img-crop
+	        var imageReader = new FileReader();
+	        imageReader.onload = function(image) {
+	            $scope.$apply(function($scope) {
+	                $scope.image.myImage = image.target.result;
+	            });
+	        };
+	        imageReader.readAsDataURL(file);
+	    }
+	};
 
 }]);

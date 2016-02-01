@@ -353,3 +353,11 @@ body {
     margin: 0 10px 15px 10px; }
     .clothes-section .cloth-cntr .cloth-item {
       height: 170px; }
+
+.show {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+.hide {
+  display: none; }
